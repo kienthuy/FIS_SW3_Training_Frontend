@@ -1,0 +1,68 @@
+<div class="contact-info">
+  <h2>Contact Us</h2>
+  <p>Address: 123 Main Street, City, Country</p>
+  <p>Phone: +1 234 567 890</p>
+  <p>Email: phamthuy.8663@gmail.com</p>
+</div>
+
+<form [formGroup]="contactForm" (ngSubmit)="confirmSubmit()" *ngIf="contactForm">
+  <div>
+    <label for="name">Name:</label>
+    <input type="text" id="name" formControlName="name" placeholder="Enter your name">
+    <div *ngIf="contactForm.get('name')?.errors?.['required'] && contactForm.get('name')?.touched" class="error-msg">
+      <span>Name is required</span>
+    </div>
+  </div>
+
+  <div>
+    <label for="email">Email:</label>
+    <input type="email" id="email" formControlName="email" placeholder="Enter your email">
+    <div *ngIf="contactForm.get('email')?.errors?.['required'] && contactForm.get('email')?.touched" class="error-msg">
+      <span>Email is required</span>
+    </div>
+    <div *ngIf="contactForm.get('email')?.errors?.['email'] && contactForm.get('email')?.touched" class="error-msg">
+      <span>Invalid email</span>
+    </div>
+  </div>
+
+  <div>
+    <label for="phoneNumber">Phone Number:</label>
+    <input type="text" id="phoneNumber" formControlName="phoneNumber" placeholder="Enter your phone number">
+    <div *ngIf="contactForm.get('phoneNumber')?.errors?.['required'] && contactForm.get('phoneNumber')?.touched" class="error-msg">
+      <span>Phone number is required</span>
+    </div>
+    <div *ngIf="contactForm.get('phoneNumber')?.errors?.['pattern'] && contactForm.get('phoneNumber')?.touched" class="error-msg">
+      <span>Invalid phone number</span>
+    </div>
+  </div>
+
+  <div>
+    <label for="message">Message:</label>
+    <textarea id="message" formControlName="message" placeholder="Enter your message"></textarea>
+    <div *ngIf="contactForm.get('message')?.errors?.['required'] && contactForm.get('message')?.touched" class="error-msg">
+      <span>Message is required</span>
+    </div>
+  </div>
+
+  <div class="buttons">
+    <button type="submit" [disabled]="contactForm.invalid">Submit</button>
+    <button type="button" (click)="onReset()">Reset</button>
+  </div>
+
+  <!-- Modal xác nhận -->
+  <div *ngIf="showConfirmation" class="confirmation-modal">
+    <div class="modal-content">
+      <h2>Confirm Submission</h2>
+      <p>Are you sure you want to submit the form?</p>
+      <button (click)="onSubmit()">Yes</button>
+      <button (click)="cancelSubmit()">No</button>
+    </div>
+  </div>
+
+  <div *ngIf="submitSuccess" class="toast success-toast show">
+    Contact request sent successfully!
+  </div>
+  <div *ngIf="submitError" class="toast error-toast show">
+    Error sending contact request. Please try again.
+  </div>
+</form>

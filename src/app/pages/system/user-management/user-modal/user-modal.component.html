@@ -1,0 +1,70 @@
+<h2 mat-dialog-title>{{ data.user ? 'Chỉnh sửa nhân viên' : 'Thêm mới nhân viên' }}</h2>
+<mat-dialog-content class="m-t-24">
+  <form [formGroup]="form" class="row">
+    
+    <div class="form-group col-md-6">
+      <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Mã nhân viên</mat-label>
+      <mat-form-field appearance="outline" class="w-100">
+        <input matInput type="text" formControlName="code" required maxlength="20">
+        <mat-hint align="end">Tối đa 20 ký tự.</mat-hint>
+        <mat-error *ngIf="form.get('code')?.hasError('required')">Thông tin bắt buộc</mat-error>
+        <mat-error *ngIf="form.get('code')?.hasError('maxlength')">Mã nhân viên không được vượt quá 20 ký tự.</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-group col-md-6">
+      <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Họ và tên</mat-label>
+      <mat-form-field appearance="outline" class="w-100">
+        <input matInput type="text" formControlName="name" maxlength="255">
+        <mat-hint align="end">Tối đa 255 ký tự.</mat-hint>
+        <mat-error *ngIf="form.get('name')?.hasError('required')">Thông tin bắt buộc</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-group col-md-6">
+      <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Chức vụ</mat-label>
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-select formControlName="position">
+          <mat-option *ngFor="let dept of positions" [value]="dept.position">{{ dept.position }}</mat-option>
+        </mat-select>
+        <mat-hint align="end">Chọn chức vụ</mat-hint>
+      </mat-form-field>
+    </div>
+
+    <div class="form-group col-md-6">
+      <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Phòng ban</mat-label>
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-select formControlName="department">
+          <mat-option *ngFor="let dept of departments" [value]="dept.code">{{ dept.name }}</mat-option>
+        </mat-select>
+        <mat-hint align="end">Chọn phòng ban</mat-hint>
+      </mat-form-field>
+    </div>
+    
+
+    <div class="form-group col-md-6">
+      <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Email</mat-label>
+      <mat-form-field appearance="outline" class="w-100">
+        <input matInput type="email" formControlName="email" maxlength="255">
+        <mat-hint align="end">Ví dụ: example@example.com</mat-hint>
+        <mat-error *ngIf="form.get('email')?.hasError('required')">Thông tin bắt buộc</mat-error>
+        <mat-error *ngIf="form.get('email')?.hasError('email')">Email không đúng định dạng.</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-group col-md-6">
+      <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Số điện thoại</mat-label>
+      <mat-form-field appearance="outline" class="w-100">
+        <input matInput type="tel" formControlName="phone" maxlength="10">
+        <mat-hint align="end">Định dạng: 10 chữ số.</mat-hint>
+        <mat-error *ngIf="form.get('phone')?.hasError('required')">Thông tin bắt buộc</mat-error>
+        <mat-error *ngIf="form.get('phone')?.hasError('pattern')">Số điện thoại không đúng định dạng.</mat-error>
+      </mat-form-field>
+    </div>
+
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="close()">Hủy</button>
+  <button mat-button color="primary" [disabled]="form.invalid" (click)="submit()">Lưu</button>
+</mat-dialog-actions>

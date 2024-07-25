@@ -1,0 +1,45 @@
+<mat-card class="cardWithShadow">
+    <mat-card-content>
+      <div class="d-flex justify-content-between align-items-center">
+        <h3>Danh sách chức vụ nhân viên</h3>
+        <button mat-raised-button color="primary" (click)="openModal(null,'CREATE')">
+          <mat-icon><i-tabler name="plus" class="icon-20 d-flex"></i-tabler></mat-icon>
+          Thêm chức vụ
+        </button>
+      </div>
+      <hr>
+      <table>
+        <thead>
+          <tr>
+            <th>Mã nhân viên</th>
+            <th>Họ và tên</th>
+            <th>Chức vụ</th>
+            <th>Phòng ban</th>
+            <th>Thao tác</th> <!-- Move this column to the end -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngIf="loading">
+            <td colspan="7" style="text-align: center;">
+              <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+            </td>
+          </tr>
+          <ng-container *ngIf="!loading">
+            <tr *ngFor="let position of positions">
+              <td>{{ position.code }}</td>
+              <td>{{ position.name }}</td>
+              <td>{{ position.position }}</td>
+              <td>{{ position.department }}</td>
+              <td>
+                <button mat-button color="primary" (click)="openModal(position,'UPDATE')">
+                  <i-tabler name="edit" class="icon-20 d-flex"></i-tabler>
+                </button>
+              </td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+      
+      
+    </mat-card-content>
+  </mat-card>

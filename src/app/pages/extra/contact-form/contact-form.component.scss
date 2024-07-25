@@ -1,0 +1,177 @@
+/* CSS cho thông tin liên hệ */
+.contact-info {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.contact-info h2 {
+  margin-bottom: 10px;
+}
+
+.contact-info p {
+  margin: 5px 0;
+}
+
+/* CSS cho form */
+form {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  animation: fadeIn 1s;
+}
+
+/* Khoảng cách giữa các trường */
+div {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+textarea {
+  height: 150px;
+}
+
+span {
+  color: red;
+  font-size: 14px;
+}
+
+/* Kiểu dáng cho các nút */
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+.success-message {
+  color: green;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+.error-message {
+  color: red;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+/* Thêm styles cho modal xác nhận */
+.confirmation-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.modal-content h2 {
+  margin-bottom: 20px;
+}
+
+.modal-content button {
+  margin: 5px;
+}
+
+/* Toast messages */
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  color: white;
+  border-radius: 5px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.success-toast {
+  background-color: green;
+}
+
+.error-toast {
+  background-color: red;
+}
+
+.toast.show {
+  opacity: 1;
+}
+
+/* Hiệu ứng chuyển động */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hiệu ứng cảnh báo cho các trường lỗi */
+.error-msg {
+  animation: shake 0.3s;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}

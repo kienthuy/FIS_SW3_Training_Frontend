@@ -1,0 +1,48 @@
+<h2 mat-dialog-title>{{ data.position ? 'Chỉnh sửa  chức vụ' : 'Thêm mới chức vụ' }}</h2>
+<mat-dialog-content class="m-t-24">
+  <form [formGroup]="form" class="row">
+    
+    <div class="form-group col-md-6">
+      <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Mã nhân viên</mat-label>
+      <mat-form-field appearance="outline" class="w-100">
+        <input matInput type="text" formControlName="code" required maxlength="20">
+        <mat-hint align="end">Tối đa 20 ký tự.</mat-hint>
+        <mat-error *ngIf="form.get('code')?.hasError('required')">Thông tin bắt buộc</mat-error>
+        <mat-error *ngIf="form.get('code')?.hasError('maxlength')">Mã nhân viên không được vượt quá 20 ký tự.</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-group col-md-6">
+      <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Họ và tên</mat-label>
+      <mat-form-field appearance="outline" class="w-100">
+        <input matInput type="text" formControlName="name" maxlength="255">
+        <mat-hint align="end">Tối đa 255 ký tự.</mat-hint>
+        <mat-error *ngIf="form.get('name')?.hasError('required')">Thông tin bắt buộc</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-group col-md-6">
+      <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Chức vụ</mat-label>
+      <mat-form-field appearance="outline" class="w-100">
+        <input matInput type="text" formControlName="position" maxlength="255">
+        <mat-hint align="end">Tối đa 255 ký tự.</mat-hint>
+        <mat-error *ngIf="form.get('position')?.hasError('required')">Thông tin bắt buộc</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-group col-md-6">
+      <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Phòng ban</mat-label>
+      <mat-form-field appearance="outline" class="w-100">
+        <input matInput type="text" formControlName="department" maxlength="255">
+        <mat-hint align="end">Tối đa 255 ký tự.</mat-hint>
+        <mat-error *ngIf="form.get('department')?.hasError('required')">Thông tin bắt buộc</mat-error>
+      </mat-form-field>
+    </div>
+    
+
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="close()">Hủy</button>
+  <button mat-button color="primary" [disabled]="form.invalid" (click)="submit()">Lưu</button>
+</mat-dialog-actions>

@@ -1,0 +1,86 @@
+<h2 mat-dialog-title>{{ data.booking ? 'Chỉnh sửa đặt lịch' : 'Thêm mới đặt lịch' }}</h2>
+<mat-dialog-content class="m-t-24">
+  <form [formGroup]="form" class="row">
+    
+    <div class="form-group col-md-6">
+      <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Mã đặt lịch</mat-label>
+      <mat-form-field appearance="outline" class="w-100">
+        <input matInput type="text" formControlName="id" required maxlength="255">
+        <mat-hint align="end">Tối đa 20 ký tự.</mat-hint>
+        <mat-error *ngIf="form.get('id')?.hasError('required')">Thông tin bắt buộc</mat-error>
+        <mat-error *ngIf="form.get('id')?.hasError('maxlength')">Mã đặt lịch không được vượt quá 20 ký tự.</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-group col-md-6">
+      <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Họ và tên người đặt</mat-label>
+      <mat-form-field appearance="outline" class="w-100">
+        <input matInput type="text" formControlName="name" maxlength="255">
+        <mat-hint align="end">Tối đa 255 ký tự.</mat-hint>
+        <mat-error *ngIf="form.get('name')?.hasError('required')">Thông tin bắt buộc</mat-error>
+      </mat-form-field>
+    </div>
+    
+    <div class="form-group col-md-6">
+      <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Email</mat-label>
+      <mat-form-field appearance="outline" class="w-100">
+        <input matInput type="email" formControlName="email" maxlength="255">
+        <mat-hint align="end">Ví dụ: example@example.com</mat-hint>
+        <mat-error *ngIf="form.get('email')?.hasError('required')">Thông tin bắt buộc</mat-error>
+        <mat-error *ngIf="form.get('email')?.hasError('email')">Email không đúng định dạng.</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-group col-md-6">
+      <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Số điện thoại</mat-label>
+      <mat-form-field appearance="outline" class="w-100">
+        <input matInput type="tel" formControlName="phone" maxlength="10">
+        <mat-hint align="end">Định dạng: 10 chữ số.</mat-hint>
+        <mat-error *ngIf="form.get('phone')?.hasError('required')">Thông tin bắt buộc</mat-error>
+        <mat-error *ngIf="form.get('phone')?.hasError('pattern')">Số điện thoại không đúng định dạng.</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-group col-md-6">
+        <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Thời gian đặt lịch</mat-label>
+        <mat-form-field appearance="outline" class="w-100">
+          <input matInput type="email" formControlName="bookingTime" maxlength="255">
+          <mat-error *ngIf="form.get('bookingTime')?.hasError('required')">Thông tin bắt buộc</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="form-group col-md-6">
+        <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Chi nhánh</mat-label>
+        <mat-form-field appearance="outline" class="w-100">
+          <input matInput type="text" formControlName="branchCode" maxlength="255">
+          <mat-hint align="end">Tối đa 255 ký tự.</mat-hint>
+          <mat-error *ngIf="form.get('branchCode')?.hasError('required')">Thông tin bắt buộc</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="form-group col-md-6">
+        <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Sản phẩm/Dịch vụ</mat-label>
+        <mat-form-field appearance="outline" class="w-100">
+          <input matInput type="text" formControlName="product" maxlength="255">
+          <mat-hint align="end">Tối đa 255 ký tự.</mat-hint>
+          <mat-error *ngIf="form.get('product')?.hasError('required')">Thông tin bắt buộc</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="form-group col-md-6">
+        <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Trạng thái</mat-label>
+        <mat-form-field appearance="outline" class="w-100">
+          <input matInput type="text" formControlName="status" maxlength="255">
+          <mat-hint align="end">Tối đa 255 ký tự.</mat-hint>
+          <mat-error *ngIf="form.get('status')?.hasError('required')">Thông tin bắt buộc</mat-error>
+        </mat-form-field>
+      </div>
+
+    
+
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="close()">Hủy</button>
+  <button mat-button color="primary" [disabled]="form.invalid" (click)="submit()">Lưu</button>
+</mat-dialog-actions>

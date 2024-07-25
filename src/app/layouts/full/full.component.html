@@ -1,0 +1,26 @@
+<mat-drawer-container class="mainWrapper blue_theme light-theme" autosize autoFocus dir="ltr" (click)="closeRightSidebar($event)">
+  <!-- Left Sidebar -->
+  <mat-drawer #leftsidenav [mode]="isOver ? 'over' : 'side'" [opened]="!isOver" (openedChange)="onSidenavOpenedChange($event)" (closedStart)="onSidenavClosedStart()" class="sidebarNav">
+    <app-sidebar></app-sidebar>
+  </mat-drawer>
+
+  <!-- Main content -->
+  <mat-drawer-content class="contentWrapper p-l-24 p-r-24" >
+    <!-- Main Content -->
+    <div class="pageWrapper maxWidth">
+      <!-- VerticalHeader -->
+      <app-header [showToggle]="!isOver" (toggleCollapsed)="toggleCollapsed()" (toggleMobileNav)="leftsidenav.toggle()"></app-header>
+      <div class="m-t-30">
+        <!-- Outlet -->
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </mat-drawer-content>
+
+  <!-- Right Sidebar -->
+  <mat-drawer #rightsidenav position="end" mode="side" [opened]="true" class="right-sidebar">
+    <app-right-sidebar></app-right-sidebar>
+  </mat-drawer>
+  
+  
+</mat-drawer-container>

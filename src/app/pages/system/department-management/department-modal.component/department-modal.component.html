@@ -1,0 +1,44 @@
+<h2 mat-dialog-title>{{ data ? 'Chỉnh sửa thông tin phòng ban' : 'Thêm mới phòng ban' }}</h2>
+<mat-dialog-content class="m-t-16">
+  <form [formGroup]="form" class="row">
+    <div class="form-group col-md-6">
+      <mat-form-field appearance="outline" class="w-100 m-t-12" color="primary">
+        <mat-label>Mã phòng ban</mat-label>
+        <input matInput type="text" formControlName="code" maxlength="20">
+        <mat-error *ngIf="form.get('code')?.hasError('required') || form.get('code')?.hasError('maxlength')">
+          Thông tin bắt buộc và không được vượt quá 20 ký tự.
+        </mat-error>
+      </mat-form-field>
+    </div>
+    
+    <div class="form-group col-md-6">
+      <mat-form-field appearance="outline" class="w-100 m-t-12" color="primary">
+        <mat-label>Tên phòng ban</mat-label>
+        <input matInput type="text" formControlName="name" maxlength="255">
+        <mat-error *ngIf="form.get('name')?.hasError('required')">Thông tin bắt buộc</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-group col-md-6">
+      <mat-form-field appearance="outline" class="w-100 m-t-12" color="primary">
+        <mat-label>Tên phòng ban (Tiếng Anh)</mat-label>
+        <input matInput type="text" formControlName="nameEn" maxlength="255">
+        <mat-error *ngIf="form.get('nameEn')?.hasError('required')">Thông tin bắt buộc</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-group col-md-6">
+      <mat-form-field appearance="outline" class="w-100 m-t-12" color="primary">
+        <mat-label>Trạng thái hoạt động</mat-label>
+        <mat-select formControlName="status">
+          <mat-option *ngFor="let item of listStatus" [value]="item.code">{{ item.name }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('status')?.hasError('required')">Thông tin bắt buộc</mat-error>
+      </mat-form-field>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="close()">Hủy</button>
+  <button mat-button color="primary" [disabled]="form.invalid" (click)="submit()">Lưu</button>
+</mat-dialog-actions>

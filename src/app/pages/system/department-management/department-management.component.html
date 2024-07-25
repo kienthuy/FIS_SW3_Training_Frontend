@@ -1,0 +1,33 @@
+<mat-card class="cardWithShadow">
+    <mat-card-content>
+      <div class="d-flex justify-content-between align-items-center">
+        <h3>Danh sách phòng ban</h3>
+        <button mat-raised-button color="primary" (click)="openModal(null)">
+          <mat-icon><i-tabler name="plus" class="icon-20 d-flex"></i-tabler></mat-icon>
+          Thêm phòng ban
+        </button>
+      </div>
+      <hr>
+      <table>
+        <thead>
+          <tr>
+            <th>Mã phòng ban</th>
+            <th>Tên phòng ban</th>
+            <th>Tên phòng ban bằng tiếng Anh</th>
+            <th>Trạng thái</th>
+            <th>Thao tác</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of listDepartment">
+            <td>{{ item.code }}</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.nameEn }}</td>
+            <td>{{ item.status === 'active' ? 'Hoạt động':'Không hoạt động' }}</td>
+            <td><button mat-button color="primary" (click)="openModal(item)"><i-tabler name="edit" class="icon-20 d-flex"></i-tabler></button></td>
+          </tr>
+        </tbody>
+      </table>
+    </mat-card-content>
+  </mat-card>
+  

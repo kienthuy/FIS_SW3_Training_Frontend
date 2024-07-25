@@ -1,0 +1,111 @@
+<h2 mat-dialog-title>Đặt hẹn giao dịch | Khách hàng cá nhân</h2>
+<br>
+<mat-card class="cardWithShadow">
+  <mat-card-content >
+    <form [formGroup]="form" class="row">
+
+      <div class="form-group col-md-12">
+        <h2 mat-dialog-title>Thông tin cá nhân</h2>
+      </div>
+
+      <div class="form-group col-md-4">
+        <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Họ và tên người đặt lịch</mat-label>
+        <mat-form-field appearance="outline" class="w-100">
+          <input matInput type="text" formControlName="name" maxlength="255">
+          <mat-error *ngIf="form.get('name')?.hasError('required') && form.get('name')?.touched">Thông tin bắt buộc</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="form-group col-md-4">
+        <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Email của người đặt</mat-label>
+        <mat-form-field appearance="outline" class="w-100">
+          <input matInput type="email" formControlName="email" maxlength="255">
+          <mat-error *ngIf="form.get('email')?.hasError('required') && form.get('email')?.touched">Thông tin bắt buộc</mat-error>
+          <mat-error *ngIf="form.get('email')?.hasError('email') && form.get('email')?.touched">Email không đúng định dạng.</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="form-group col-md-4">
+        <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Số điện thoại của người đặt</mat-label>
+        <mat-form-field appearance="outline" class="w-100">
+          <input matInput type="tel" formControlName="phone" maxlength="10">
+          <mat-error *ngIf="form.get('phone')?.hasError('required') && form.get('phone')?.touched">Thông tin bắt buộc</mat-error>
+          <mat-error *ngIf="form.get('phone')?.hasError('pattern') && form.get('phone')?.touched">Số điện thoại không đúng định dạng.</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="form-group col-md-12">
+        <h2 mat-dialog-title>Chọn địa điểm và thời gian hẹn</h2>
+      </div>
+
+      <div class="form-group col-md-4">
+        <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Tỉnh/Thành phố</mat-label>
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-select formControlName="provinceCode">
+            <mat-option *ngFor="let item of listProvince" [value]="item.code">{{ item.name }}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.get('provinceCode')?.hasError('required') && form.get('provinceCode')?.touched">Thông tin bắt buộc</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="form-group col-md-4">
+        <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Quận/Huyện</mat-label>
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-select formControlName="districtCode">
+            <mat-option *ngFor="let item of listDistrict" [value]="item.code">{{ item.name }}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.get('districtCode')?.hasError('required') && form.get('districtCode')?.touched">Thông tin bắt buộc</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="form-group col-md-4">
+        <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Phường/Xã</mat-label>
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-select formControlName="wardCode">
+            <mat-option *ngFor="let item of listWard" [value]="item.code">{{ item.name }}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.get('wardCode')?.hasError('required') && form.get('wardCode')?.touched">Thông tin bắt buộc</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="form-group col-md-4">
+        <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Chi nhánh ngân hàng</mat-label>
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-select formControlName="branchCode">
+            <mat-option *ngFor="let item of listBranch" [value]="item.code">{{ item.name }}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.get('branchCode')?.hasError('required') && form.get('branchCode')?.touched">Thông tin bắt buộc</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="form-group col-md-4">
+        <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Thời gian đặt lịch</mat-label>
+        <mat-form-field appearance="outline" class="w-100">
+          <input matInput [matDatepicker]="picker" formControlName="bookingTime">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="form.get('bookingTime')?.hasError('required') && form.get('bookingTime')?.touched">Thông tin bắt buộc</mat-error>
+        </mat-form-field>
+      </div>
+      
+      <div class="form-group col-md-12">
+        <h2 mat-dialog-title>Chọn dịch vụ, sản phẩm bạn mong muốn được tư vấn</h2>
+      </div>
+      <div class="form-group col-md-4">
+        <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Dịch vụ/Sản phẩm</mat-label>
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-select formControlName="product">
+            <mat-option *ngFor="let item of listProduct" [value]="item.code">{{ item.name }}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.get('product')?.hasError('required') && form.get('product')?.touched">Thông tin bắt buộc</mat-error>
+        </mat-form-field>
+      </div>
+    </form>
+
+    <mat-dialog-actions>
+      <div class="d-flex justify-content-center">
+        <button mat-flat-button color="primary" (click)="submit()">Đặt lịch hẹn</button>
+      </div>
+    </mat-dialog-actions>
+  </mat-card-content>
+</mat-card>

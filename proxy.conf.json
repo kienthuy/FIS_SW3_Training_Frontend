@@ -1,0 +1,11 @@
+{
+    "/api/portal/*": {
+      "target": "http://localhost:8021/api/portal",
+      "secure": false,
+      "pathRewrite": {
+        "^/api/portal" : ""
+      },
+      "logLevel": "debug"
+    }
+  }
+  
