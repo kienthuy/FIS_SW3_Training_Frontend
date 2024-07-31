@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { BaseResponse } from '../model/base-response.model';
 import { Department } from '../model/department.modal';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -15,19 +16,19 @@ export class DepartmentService {
 
   search(payload:any): Observable<BaseResponse>{
     return this.http.post<BaseResponse>(
-      `http://localhost:8021/api/portal/department/search`, payload
+      `${environment.PortalService}/department/search`, payload
     );
   }
 
   create(payload:any): Observable<BaseResponse>{
     return this.http.post<BaseResponse>(
-      `http://localhost:8021/api/portal/department/create`, payload
+      `${environment.PortalService}/department/create`, payload
     );
   }
 
   update(payload:any): Observable<BaseResponse>{
     return this.http.post<BaseResponse>(
-      `http://localhost:8021/api/portal/department/update`, payload
+      `${environment.PortalService}/department/update`, payload
     );
   }
 }

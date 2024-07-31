@@ -25,7 +25,6 @@ import { HeaderComponent } from './layouts/full/header/header.component';
 import { BrandingComponent } from './layouts/full/sidebar/branding.component';
 import { AppNavItemComponent } from './layouts/full/sidebar/nav-item/nav-item.component';
 import { MyHttpInterceptor } from './core/interceptor/http-interceptor';
-import { RightSidebarComponent } from './layouts/full/right-sidebar/right-sidebar.component';
 import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -36,8 +35,7 @@ import { ToastrModule } from 'ngx-toastr';
     SidebarComponent,
     HeaderComponent,
     BrandingComponent,
-    AppNavItemComponent,
-    RightSidebarComponent
+    AppNavItemComponent
   ],
   imports: [
     BrowserModule,

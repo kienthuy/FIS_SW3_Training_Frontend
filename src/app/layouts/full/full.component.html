@@ -3,7 +3,6 @@
   <mat-drawer #leftsidenav [mode]="isOver ? 'over' : 'side'" [opened]="!isOver" (openedChange)="onSidenavOpenedChange($event)" (closedStart)="onSidenavClosedStart()" class="sidebarNav">
     <app-sidebar></app-sidebar>
   </mat-drawer>
-
   <!-- Main content -->
   <mat-drawer-content class="contentWrapper p-l-24 p-r-24" >
     <!-- Main Content -->
@@ -16,11 +15,4 @@
       </div>
     </div>
   </mat-drawer-content>
-
-  <!-- Right Sidebar -->
-  <mat-drawer #rightsidenav position="end" mode="side" [opened]="true" class="right-sidebar">
-    <app-right-sidebar></app-right-sidebar>
-  </mat-drawer>
-  
-  
 </mat-drawer-container>

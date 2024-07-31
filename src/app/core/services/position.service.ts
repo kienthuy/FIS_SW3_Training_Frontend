@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { BaseResponse } from '../model/base-response.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -14,19 +15,19 @@ export class PositionService {
 
   search(payload:any): Observable<BaseResponse>{
     return this.http.post<BaseResponse>(
-      `http://localhost:8021/api/portal/position/search`, payload
+      `${environment.PortalService}/position/search`, payload
     );
   }
 
   create(payload:any): Observable<BaseResponse>{
     return this.http.post<BaseResponse>(
-      `http://localhost:8021/api/portal/position/create`, payload
+      `${environment.PortalService}/position/create`, payload
     );
   }
 
   update(payload:any): Observable<BaseResponse>{
     return this.http.post<BaseResponse>(
-      `http://localhost:8021/api/portal/position/update`, payload
+      `${environment.PortalService}/position/update`, payload
     );
   }
 

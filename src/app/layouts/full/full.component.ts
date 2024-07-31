@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Subscription } from 'rxjs';
 import { MatDrawer } from '@angular/material/sidenav';
-import { CartService } from 'src/app/core/services/cart.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 const MOBILE_VIEW = 'screen and (max-width: 768px)';
@@ -33,7 +32,6 @@ export class FullComponent implements OnInit {
   constructor(
     private breakpointObserver: BreakpointObserver,
     private dialog: MatDialog,
-    private cartService: CartService
   ) {}
 
   ngOnInit(): void {
@@ -43,11 +41,6 @@ export class FullComponent implements OnInit {
         this.isMobileScreen = state.breakpoints[MOBILE_VIEW];
         this.isContentWidthFixed = state.breakpoints[MONITOR_VIEW];
       });
-    this.loadCartItems();
-  }
-
-  loadCartItems(): void {
-    this.cartItems = this.cartService.getCartItems();
   }
 
   ngOnDestroy() {
@@ -74,7 +67,4 @@ export class FullComponent implements OnInit {
     }
   }
 
-  getTotalQuantity(): number {
-    return this.cartItems.reduce((total, item) => total + item.quantity, 0); // Tính tổng số lượng sản phẩm trong giỏ hàng
-  }
 }

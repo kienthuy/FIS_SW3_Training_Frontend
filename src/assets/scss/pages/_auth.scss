@@ -70,3 +70,23 @@
 .max-width-form {
   max-width: 450px;
 }
+
+.blank-layout-container {
+  height: 100vh;
+  display: flex;
+  background-size: cover;
+  background-image: url('/assets/images/backgrounds/bg-login.png');
+  align-items: center;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.cardWithShadow {
+  background-color: rgba(248, 249, 250, 0.7) !important;
+}
+
+.logoLogin {
+  position: absolute;
+  top:  1rem;
+  left: 1rem;
+}
