@@ -1,0 +1,31 @@
+<div class="blank-layout-container justify-content-center align-items-center bg-light-primary">
+    <div class="position-relative row w-100 h-100 bg-gredient justify-content-center" >
+      <img class="logoLogin" src="./assets/images/logos/fpt-logo.svg" id="logo" style="width: 12em; height: 12em;">
+      <div class="d-flex align-items-center">
+        <mat-card class="cardWithShadow auth-card">
+            <mat-card-content class="p-32">
+                <div class="row">
+                    <div class="col-lg-6 d-none d-lg-flex justify-content-center">
+                        <img src="/assets/images/backgrounds/login3-bg.png" alt="login" style="max-width: 500px;">
+                    </div>
+                    <div class="col-lg-6 d-flex justify-content-center">
+                        <div class="w-100">
+                            <h4 class="f-w-700 f-s-30 lh-base m-0">Quên mật khẩu?</h4>
+                            <span class="f-s-14 d-block m-t-16">Vui lòng nhập địa chỉ email được liên kết với tài khoản của bạn và chúng tôi sẽ gửi cho bạn một liên kết qua email để đặt lại mật khẩu của bạn.</span>
+                            <form novalidate class="m-t-30">
+                                <mat-label class="f-s-14 f-w-600 m-b-12 d-block">Địa chỉ email</mat-label>
+                                <mat-form-field appearance="outline" class="w-100">
+                                <input matInput type="email" formControlName="email" required>
+                                </mat-form-field>
+                                <button mat-flat-button color="primary" class="w-100">Quên mật khẩu</button>
+                                <a mat-stroked-button color="primary" class="w-100 m-t-8" href="/authentication/login">Trở về Đăng nhập</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+  

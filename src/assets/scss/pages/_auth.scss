@@ -90,3 +90,20 @@
   top:  1rem;
   left: 1rem;
 }
+
+.auth-card {
+  margin: 50px auto;
+  max-width: 1130px;
+  width: 100%;
+  position: relative;
+  border-radius: 18px;
+  z-index: 1;
+  box-shadow: #2553b91a 0 2px 30px 15px;
+  background-color: #fff
+}
+
+@media (min-width: 1200px) {
+  .auth-card {
+      min-width:1130px
+  }
+}
