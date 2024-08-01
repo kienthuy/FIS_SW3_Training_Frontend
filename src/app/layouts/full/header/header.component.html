@@ -5,16 +5,45 @@
   </button>
   <!-- --------------------------------------------------------------- -->
 
-  <!-- --------------------------------------------------------------- -->
-  <!-- Notification Dropdown -->
-  <!-- --------------------------------------------------------------- -->
-
-  <!-- <button mat-icon-button aria-label="Notifications">
-    <i-tabler class="d-flex" name="bell" matBadge="9" matBadgeColor="primary"></i-tabler>
-  </button> -->
   <marquee style="width: 40%;"><i style="font-size: 11px;">Dự án Fis SW3 Training được ThuyNPK2 - Phạm Trương Kiến Thụy phát triển!</i></marquee>
 
   <span class="flex-1-auto"></span>
+
+  <button
+    mat-icon-button
+    [matMenuTriggerFor]="langmenu"
+    aria-label="Notifications" class="m-l-10"
+  >
+    <img
+      src="/assets/images/flag/icon-flag-en.svg"
+      class="rounded-circle object-cover"
+      width="35"
+    />
+  </button>
+
+  <mat-menu #langmenu="matMenu" xPosition="before">
+    <button mat-menu-item>
+      <div class="d-flex align-items-center">
+        <img class="rounded-circle object-cover m-r-8 icon-20" src="/assets/images/flag/icon-flag-en.svg">
+        <span class="mat-subtitle-1 f-s-14">English</span>
+      </div>
+    </button>
+    <button mat-menu-item>
+      <div class="d-flex align-items-center">
+        <img class="rounded-circle object-cover m-r-8 icon-20" src="/assets/images/flag/icon-flag-es.svg">
+        <span class="mat-subtitle-1 f-s-14">Español</span>
+      </div>
+    </button>
+  </mat-menu>
+
+  <button mat-icon-button aria-label="Notifications">
+    <i-tabler class="d-flex" name="message-2" matBadgeColor="primary"></i-tabler>
+    <div class="pulse"><span class="heartbit border-success"></span><span class="point bg-success"></span></div>
+  </button>
+  <button mat-icon-button aria-label="Notifications">
+    <i-tabler class="d-flex" name="layout-grid-add" matBadgeColor="primary"></i-tabler>
+    <div class="pulse"><span class="heartbit border-primary"></span><span class="point bg-primary"></span></div>
+  </button>
 
   <!-- --------------------------------------------------------------- -->
   <!-- profile Dropdown -->
@@ -28,7 +57,7 @@
     <img
       src="/assets/images/profile/user-3.jpg"
       class="rounded-circle object-cover"
-      width="35"
+      width="40"
     />
   </button>
   <mat-menu #profilemenu="matMenu" xPosition="before" class="topbar-dd cardWithShadow">

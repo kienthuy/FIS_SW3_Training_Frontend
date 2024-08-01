@@ -1,8 +1,9 @@
 <mat-drawer-container class="mainWrapper blue_theme light-theme" autosize autoFocus dir="ltr" (click)="closeRightSidebar($event)">
   <!-- Left Sidebar -->
-  <mat-drawer #leftsidenav [mode]="isOver ? 'over' : 'side'" [opened]="!isOver" (openedChange)="onSidenavOpenedChange($event)" (closedStart)="onSidenavClosedStart()" class="sidebarNav">
+  <mat-drawer style="position: fixed;" #leftsidenav [mode]="isOver ? 'over' : 'side'" [opened]="!isOver" (openedChange)="onSidenavOpenedChange($event)" (closedStart)="onSidenavClosedStart()" class="sidebarNav">
     <app-sidebar></app-sidebar>
   </mat-drawer>
+
   <!-- Main content -->
   <mat-drawer-content class="contentWrapper p-l-24 p-r-24" >
     <!-- Main Content -->

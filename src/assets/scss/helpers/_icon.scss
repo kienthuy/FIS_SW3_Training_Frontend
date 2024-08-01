@@ -1,0 +1,59 @@
+.pulse {
+    position: relative;
+    top: -15px;
+    right: -8px
+}
+
+.pulse .heartbit {
+    position: absolute;
+    top: -17px;
+    right: -2px;
+    height: 18px;
+    width: 18px;
+    z-index: 10;
+    border: 3px solid #4bd08b;
+    border-radius: 70px;
+    -moz-animation: heartbit 1s ease-out;
+    -moz-animation-iteration-count: infinite;
+    -o-animation: heartbit 1s ease-out;
+    -o-animation-iteration-count: infinite;
+    -webkit-animation: heartbit 1s ease-out;
+    animation-iteration-count: infinite
+}
+
+.pulse .point {
+    width: 4px;
+    height: 4px;
+    border-radius: 30px;
+    background-color: #4bd08b;
+    position: absolute;
+    right: 5px;
+    top: -10px
+}
+
+@keyframes heartbit {
+    0% {
+        -webkit-transform: scale(0);
+        opacity: 0
+    }
+
+    25% {
+        -webkit-transform: scale(.1);
+        opacity: .1
+    }
+
+    50% {
+        -webkit-transform: scale(.5);
+        opacity: .3
+    }
+
+    75% {
+        -webkit-transform: scale(.8);
+        opacity: .5
+    }
+
+    to {
+        -webkit-transform: scale(1);
+        opacity: 0
+    }
+}

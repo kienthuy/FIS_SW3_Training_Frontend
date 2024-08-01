@@ -4,6 +4,7 @@
 @import "variables";
 @import "layouts/transitions";
 @import "helpers/color";
+@import "helpers/icon";
 @import "helpers/icon-size";
 
 //Theme colors
@@ -25,12 +26,3 @@
 @import "pages/auth";
 
 @import 'ngx-toastr/toastr';
-
-
-
-.customizerBtn {
-    position: fixed;
-    right: 40px;
-    bottom: 90px;
-    z-index: 9;
-}
