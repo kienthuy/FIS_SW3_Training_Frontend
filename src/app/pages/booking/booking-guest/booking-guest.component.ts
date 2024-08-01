@@ -31,8 +31,6 @@ export class BookingGuestComponent implements OnInit {
   ngOnInit(): void {
     this.initForm(); 
     this.getProvince();
-    this.getDistrict();
-    this.getWard();
     this.getBranch();
     this.getProduct();
   }
@@ -63,7 +61,31 @@ export class BookingGuestComponent implements OnInit {
         bookingTime: bookingData.bookingTime,
         product: bookingData.product,
       });
+      this.getDistrict(bookingData.provinceCode);
+      this.getWard(bookingData.districtCode);
     }
+
+    this.form.get('provinceCode')?.valueChanges.subscribe(value => {
+      if (value) {
+        this.getDistrict(value);
+        this.form.get('districtCode')?.reset();
+        this.form.get('wardCode')?.reset();
+      } else {
+        this.listDistrict = [];
+        this.listWard = [];
+        this.form.get('districtCode')?.reset();
+        this.form.get('wardCode')?.reset();
+      }
+    });
+
+    this.form.get('districtCode')?.valueChanges.subscribe(value => {
+      if (value) {
+        this.getWard(value);
+      } else {
+        this.listWard = [];
+        this.form.get('wardCode')?.reset();
+      }
+    });
   }
 
   submit() {
@@ -103,8 +125,8 @@ export class BookingGuestComponent implements OnInit {
     });
   }
 
-  getDistrict(){
-    const json = {};
+  getDistrict(provinceCode: string){
+    const json = { provinceCode };
     this.addressService.getDistrict(json).subscribe((res:any) => {
       if (res?.errorCode === '0') {
         this.listDistrict = res.data;
@@ -112,8 +134,8 @@ export class BookingGuestComponent implements OnInit {
     });
   }
 
-  getWard(){
-    const json = {};
+  getWard(districtCode: string){
+    const json = { districtCode };
     this.addressService.getWard(json).subscribe((res:any) => {
       if (res?.errorCode === '0') {
         this.listWard = res.data;
