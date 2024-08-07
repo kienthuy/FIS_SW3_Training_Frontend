@@ -1,22 +1,17 @@
 <mat-toolbar class="topbar">
   <!-- Mobile Menu -->
-  <button mat-icon-button (click)="toggleMobileNav.emit()" *ngIf="!showToggle">
+  <button mat-icon-button (click)="toggleMobileNav.emit()" >
     <i-tabler name="menu-2" class="icon-20 d-flex"></i-tabler>
   </button>
   <!-- --------------------------------------------------------------- -->
 
-  <marquee style="width: 40%;"><i style="font-size: 11px;">Dự án Fis SW3 Training được ThuyNPK2 - Phạm Trương Kiến Thụy phát triển!</i></marquee>
+  <a>
+    <img src="https://cdn.fpt-is.com/vi/FPT-IS-set-logo-08-1715516291.svg" alt="logo" class="align-middle m-2 w-100" style="height: 42px;">
+  </a>
+
+  <marquee style="width: 40%; background-color: #0085db; border-radius: 6px; margin-left: 2em;"><i style="font-size: 11px;">Dự án Fis SW3 Training được ThuyNPK2 - Phạm Trương Kiến Thụy phát triển!</i></marquee>
 
   <span class="flex-1-auto"></span>
-
-  <button mat-stroked-button class="d-none d-lg-flex mdc-button mat-mdc-button-base">
-    <span class="mdc-button__label">
-      <div class="d-flex align-items-center">
-        <i-tabler name="search" class="icon-20 d-flex m-r-10"></i-tabler>
-        Tra cứu nhanh chức năng
-      </div>
-    </span>
-  </button>
 
   <button
     mat-icon-button

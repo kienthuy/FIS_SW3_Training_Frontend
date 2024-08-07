@@ -16,7 +16,6 @@ const MONITOR_VIEW = 'screen and (min-width: 1024px)';
 export class FullComponent implements OnInit {
 
   @ViewChild('leftsidenav') leftSidenav!: MatDrawer;
-  @ViewChild('rightsidenav') rightSidenav!: MatDrawer;
 
   private layoutChangesSubscription = Subscription.EMPTY;
   private isMobileScreen = false;
@@ -62,7 +61,6 @@ export class FullComponent implements OnInit {
   closeRightSidebar(event: MouseEvent) {
     const target = event.target as HTMLElement;
     if (target && target.classList.contains('mat-drawer-backdrop')) {
-      this.rightSidenav.close();
       this.leftSidenav.toggle();
     }
   }

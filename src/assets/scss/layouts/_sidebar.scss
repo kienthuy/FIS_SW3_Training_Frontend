@@ -21,7 +21,7 @@
 
 @media (min-width: 1024px) {
   .contentWrapper {
-    margin-left: calc(#{$sidenav-desktop} + #{$layout-padding}) !important;
+    // margin-left: calc(#{$sidenav-desktop} + #{$layout-padding}) !important;
   }
   .sidebarNav-mini {
     .contentWrapper {

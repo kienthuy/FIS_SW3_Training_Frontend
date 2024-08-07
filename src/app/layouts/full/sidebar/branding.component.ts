@@ -4,13 +4,14 @@ import { Component } from '@angular/core';
   selector: 'app-branding',
   template: `
     <div class="branding">
-      <a href="/">
-        <img
-          src="https://cdn.fpt-is.com/vi/FPT-IS-set-logo-08-1715516291.svg"
-          class="align-middle m-2 w-100"
-          alt="logo"
-        />
-      </a>
+      <button mat-stroked-button class="d-none d-lg-flex mdc-button mat-mdc-button-base w-100">
+        <span class="mdc-button__label">
+          <div class="d-flex align-items-center">
+            <i-tabler name="search" class="icon-20 d-flex m-r-10"></i-tabler>
+            Tìm chức năng
+          </div>
+        </span>
+      </button>
     </div>
   `,
 })
